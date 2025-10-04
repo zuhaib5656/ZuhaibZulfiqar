@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuhaib | Web Developer & Automation Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 1s ease-in-out',
+                        'slideInUp': 'slideInUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        .section-padding {
+            padding: 5rem 0;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            top: 10%;
+            left: 5%;
+            animation: float 8s ease-in-out infinite;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: #1d4ed8;
+            bottom: 20%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active-nav::after {
+            width: 100%;
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .process-step {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: #3b82f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .process-step:nth-child(1)::before { content: '1'; }
+        .process-step:nth-child(2)::before { content: '2'; }
+        .process-step:nth-child(3)::before { content: '3'; }
+        .process-step:nth-child(4)::before { content: '4'; }
+        .process-step:nth-child(5)::before { content: '5'; }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800 overflow-x-hidden">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center animate-pulse-slow">
+                        <span class="text-white font-bold">Z</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Zuhaib</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#home" class="nav-link active-nav text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#process" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Process</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Case Studies</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                </nav>
+                
+                <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors btn-glow">
+                    Get Your Free Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - IMPROVED -->
+  <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white relative overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        
+        <!-- Animated grid background -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-block mb-4 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-semibold">
+                        <i class="fas fa-bolt text-yellow-300 mr-2"></i>
+                        Available for Freelance Projects
+                    </div>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                        I Turn Business Challenges Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-200">Digital Revenue</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 max-w-lg leading-relaxed">
+                        Web apps, automation, and marketing systems that have generated <strong class="text-white">$2M+</strong> for 25+ businesses across 5 industries. No fluff, no jargon—just clean code and real results.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-8 max-w-lg">
+                        <div class="text-center p-3 bg-white/10 backdrop-blur-sm rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="text-3xl font-bold text-white">25+</div>
+                            <div class="text-sm text-blue-200">Clients</div>
+                        </div>
+                        <div class="text-center p-3 bg-white/10 backdrop-blur-sm rounded-lg" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="text-3xl font-bold text-white">$2M+</div>
+                            <div class="text-sm text-blue-200">Generated</div>
+                        </div>
+                        <div class="text-center p-3 bg-white/10 backdrop-blur-sm rounded-lg" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="text-3xl font-bold text-white">5</div>
+                            <div class="text-sm text-blue-200">Industries</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#projects" class="group bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-center hover:bg-blue-50 transition-all btn-glow transform hover:scale-105">
+                            See My Work
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform inline-block"></i>
+                        </a>
+                        <a href="https://wa.me/923288768783?text=Hi%20Zuhaib!%20I'm%20interested%20in%20discussing%20a%20project." class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-white hover:text-blue-700 transition-all transform hover:scale-105">
+                            Free Strategy Call
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center text-blue-100">
+                        <i class="fas fa-clock mr-2 animate-pulse"></i>
+                        <span>I respond within 4 hours (Mon-Fri)</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="relative">
+                        <!-- Glowing rings around image -->
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 to-cyan-400 blur-2xl opacity-30 animate-pulse"></div>
+                        <div class="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 opacity-20 blur-xl"></div>
+                        
+                        <!-- Main image container -->
+                        <div class="relative w-auto h-[120] rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl backdrop-blur-sm transform hover:scale-105 transition-transform duration-300">
+                            <img src="https://i.ibb.co/nNPZP9W5/Gemini-Generated-Image-qkteqfqkteqfqkte.png" alt="Zuhaib - Web Developer" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 px-6 rounded-xl shadow-2xl border-2 border-white/20" data-aos="zoom-in" data-aos-delay="600">
+                            <p class="font-bold text-lg">Zuhaib</p>
+                            <p class="text-sm opacity-90">Full-Stack Developer</p>
+                        </div>
+                        
+                        <!-- Floating tech icons -->
+                        <div class="absolute -top-4 -left-4 bg-white text-blue-700 p-3 rounded-lg shadow-xl animate-bounce" data-aos="zoom-in" data-aos-delay="700" style="animation-delay: 0s; animation-duration: 3s;">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                        <div class="absolute top-8 -right-8 bg-white text-blue-700 p-3 rounded-lg shadow-xl animate-bounce" data-aos="zoom-in" data-aos-delay="800" style="animation-delay: 1s; animation-duration: 3s;">
+                            <i class="fas fa-rocket text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Social Proof Banner - NEW SECTION -->
+    <section class="py-6 bg-gray-100 border-y border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <p class="text-gray-600 font-medium mb-4 md:mb-0">Trusted by businesses across multiple industries</p>
+                <div class="flex space-x-8 text-gray-400">
+                    <i class="fab fa-shopify text-2xl"></i>
+                    <i class="fab fa-google text-2xl"></i>
+                    <i class="fab fa-wordpress text-2xl"></i>
+                    <i class="fab fa-react text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section - IMPROVED -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-4xl font-bold text-blue-600 mb-2">25+</p>
+                    <p class="text-gray-600">Businesses Scaled</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-4xl font-bold text-blue-600 mb-2">$2M+</p>
+                    <p class="text-gray-600">Revenue Generated</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <p class="text-4xl font-bold text-blue-600 mb-2">1,500+</p>
+                    <p class="text-gray-600">Development Hours</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <p class="text-4xl font-bold text-blue-600 mb-2">98%</p>
+                    <p class="text-gray-600">Would Hire Again</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section - IMPROVED -->
+    <section id="services" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Results-Driven Digital Solutions</h2>
+                <p class="text-lg text-gray-600">
+                    I build systems that make you money while you sleep. No fluff, no jargon—just clean code and real results.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Web Development</h3>
+                    <p class="text-gray-600 mb-4">
+                        Mobile-first sites that load in under 2 seconds (Google loves that). Launch faster, scale smarter, convert better.
+                    </p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">
+                            Starting from $3,500
+                        </span>
+                    </div>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Responsive & Mobile-first Websites</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>E-commerce & Shopify Solutions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Full-Stack Web Applications</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-clock mr-1"></i> 3-6 week delivery
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Business Automation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Save 15+ hours/week on repetitive tasks. ROI Calculator: See your time savings.
+                    </p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">
+                            Starting from $2,000
+                        </span>
+                    </div>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Workflow & Process Automation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>CRM & System Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Custom Automation Solutions</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-clock mr-1"></i> 2-4 week delivery
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
+                        <i class="fas fa-search text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Marketing That Brings Customers</h3>
+                    <p class="text-gray-600 mb-4">
+                        90-day results guaranteed or work continues free. Data-driven strategies that increase visibility and maximize conversions.
+                    </p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium">
+                            Starting from $1,000/mo
+                        </span>
+                    </div>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Google Business Profile Optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>Conversion-Focused Copywriting</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            <span>PPC & Social Media Advertising</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 text-sm text-gray-500">
+                        <i class="fas fa-shield-alt mr-1"></i> 90-day guarantee
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section - NEW SECTION -->
+    <section id="process" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How I Work (Simple 5-Step Process)</h2>
+                <p class="text-lg text-gray-600">
+                    Transparent process that makes the service tangible and reduces anxiety.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-8">
+                    <div class="process-step" data-aos="fade-right">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Discovery Call (30 min, free)</h3>
+                        <p class="text-gray-600">We discuss your business challenges, goals, and requirements. No pressure, just honest advice.</p>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Strategy & Proposal (48 hours)</h3>
+                        <p class="text-gray-600">I analyze your needs and create a detailed proposal with timeline, deliverables, and investment.</p>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Design Approval (7 days)</h3>
+                        <p class="text-gray-600">We create wireframes and mockups for your approval before any development begins.</p>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Development & Testing (2-4 weeks)</h3>
+                        <p class="text-gray-600">I build your solution with regular updates and testing to ensure quality.</p>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="400">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Launch & 30-day support</h3>
+                        <p class="text-gray-600">We deploy your solution and I provide 30 days of free support to ensure everything runs smoothly.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center" data-aos="fade-up">
+                    <a href="#contact" class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors btn-glow">
+                        Start Your Project Today
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - IMPROVED -->
+   <section id="projects" class="section-padding bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Results That Speak</h2>
+            <p class="text-lg text-gray-600">
+                Real projects I actually built — websites, web apps, automation systems and e‑commerce solutions that move the needle.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+            <!-- Momentum Fitness Lahore -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Momentum Fitness Lahore</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Fitness • Memberships</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Memberships + Booking System</h3>
+                    <p class="text-gray-600 mb-4">
+                        Full fitness center site with class schedules, trainer profiles, membership flows and integrated booking/payment system.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Result</p>
+                                <p class="text-blue-700 font-bold">45% increase in signups</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Timeframe</p>
+                                <p class="text-blue-700 font-bold">90 days</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Website</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Booking</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Memberships</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Specialized Timber (React + Tailwind CMS) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="150">
+                <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Specialized Timber</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">React • Tailwind • CMS</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Custom CMS + E‑commerce</h3>
+                    <p class="text-gray-600 mb-4">
+                        Built a React + Tailwind CMS powering inventory, order processing and a customer portal — shipped custom integrations and admin UX.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Sales Impact</p>
+                                <p class="text-blue-700 font-bold">60% increase in online sales</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Timeframe</p>
+                                <p class="text-blue-700 font-bold">6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">React</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Tailwind</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">E‑commerce</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Doctor Teeth (Faisalabad) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Doctor Teeth — Faisalabad</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Dental • GBP</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">GBP Optimization & Appointments</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clinic website with GBP improvements, appointment booking and service pages tailored for local search and conversions.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Inquiry Increase</p>
+                                <p class="text-blue-700 font-bold">40% more patient inquiries</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Timeframe</p>
+                                <p class="text-blue-700 font-bold">60 days</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Healthcare</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">GBP</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Booking</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Shayan Dental Clinic (Abbottabad) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="250">
+                <div class="h-48 bg-gradient-to-r from-emerald-500 to-green-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Shayan Dental Clinic — Abbottabad</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Dental • Local SEO</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Local Search & Website</h3>
+                    <p class="text-gray-600 mb-4">
+                        Website + GBP improvements designed to increase walk‑ins and appointment bookings for a local dental practice.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Local Impact</p>
+                                <p class="text-blue-700 font-bold">Improved GBP visibility</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Deliverable</p>
+                                <p class="text-blue-700 font-bold">Website + GBP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Dentistry</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Local SEO</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Web</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Borano Law Firm (Website + Legal Management System) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Borano Law Firm</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Legal Tech • Full‑Stack</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Legal Management System + Website</h3>
+                    <p class="text-gray-600 mb-4">
+                        Full legal management system: case tracking, client portal, document management and automation — paired with a firm website.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Efficiency</p>
+                                <p class="text-blue-700 font-bold">70% reduction in admin time</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Timeframe</p>
+                                <p class="text-blue-700 font-bold">30 days (MVP)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full‑Stack</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Case Mgmt</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Client Portal</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Musf Clothing Brand (Shopify) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover" data-aos="fade-up" data-aos-delay="350">
+                <div class="h-48 bg-gradient-to-r from-pink-500 to-rose-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Musf Clothing Brand</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Shopify • Custom Theme</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Shopify Theme & CRO</h3>
+                    <p class="text-gray-600 mb-4">
+                        Built a custom Shopify theme with advanced filters, conversion-optimized product pages and marketing integrations.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Conversion</p>
+                                <p class="text-blue-700 font-bold">35% uplift</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Timeframe</p>
+                                <p class="text-blue-700 font-bold">3 months</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Shopify</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">E‑commerce</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">CRO</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- HVAC Automation System -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover hidden-project" data-aos="fade-up" data-aos-delay="400">
+                <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">HVAC Automation & Integration</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Automation • Web App</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Proposal Automation + Instagram Ads</h3>
+                    <p class="text-gray-600 mb-4">
+                        Centralized web app that automates proposal generation, syncs multiple company websites, and runs GBP/Instagram ad campaigns for an international HVAC client.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Efficiency Gain</p>
+                                <p class="text-blue-700 font-bold">80% faster proposal generation</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Scope</p>
+                                <p class="text-blue-700 font-bold">Web App + Ads</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Automation</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Integration</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">GBP Ads</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Student Complaint Platform -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover hidden-project" data-aos="fade-up" data-aos-delay="450">
+                <div class="h-48 bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Student Complaint Platform</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">Full‑Stack • EdTech</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">College Complaints & Case Tracking</h3>
+                    <p class="text-gray-600 mb-4">
+                        Full‑stack platform for student complaints, case assignment and college administration workflows.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Deliverable</p>
+                                <p class="text-blue-700 font-bold">MVP + Admin Panel</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Audience</p>
+                                <p class="text-blue-700 font-bold">Colleges</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Full‑Stack</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Admin</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">EdTech</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Editing + CRO Landing Page -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover hidden-project" data-aos="fade-up" data-aos-delay="500">
+                <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10 text-center text-white p-4">
+                        <h3 class="text-xl font-bold mb-2">Video Editing Bundle & Sales Page</h3>
+                        <span class="bg-white/30 text-white text-sm px-3 py-1 rounded-full">CRO • Copywriting</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">High‑converting Landing Page</h3>
+                    <p class="text-gray-600 mb-4">
+                        Landing page with advanced copywriting and CRO techniques to sell video editing bundles and marketing services.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="font-medium">Focus</p>
+                                <p class="text-blue-700 font-bold">Conversion & Sales</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">Format</p>
+                                <p class="text-blue-700 font-bold">Single Page</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">CRO</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Copy</span>
+                        <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Sales</span>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Case Study
+                        <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="text-center mt-12" data-aos="fade-up">
+            <button id="load-more-projects" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors btn-glow">
+                <i class="fas fa-plus mr-2"></i>
+                Load More Projects
+            </button>
+            <div class="mt-6">
+                <a href="#contact" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-lg">
+                    Start Your Project Today
+                    <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.hidden-project {
+    display: none;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const loadMoreButton = document.getElementById('load-more-projects');
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    let projectsVisible = false;
+    
+    loadMoreButton.addEventListener('click', function() {
+        if (!projectsVisible) {
+            // Show all hidden projects
+            hiddenProjects.forEach(project => {
+                project.style.display = 'block';
+            });
+            loadMoreButton.innerHTML = '<i class="fas fa-minus mr-2"></i> Show Less Projects';
+            projectsVisible = true;
+            
+            // Reinitialize AOS for the newly visible elements
+            if (window.AOS && typeof AOS.refresh === 'function') AOS.refresh();
+        } else {
+            // Hide the additional projects
+            hiddenProjects.forEach(project => {
+                project.style.display = 'none';
+            });
+            loadMoreButton.innerHTML = '<i class="fas fa-plus mr-2"></i> Load More Projects';
+            projectsVisible = false;
+        }
+    });
+});
+</script>
+
+    <!-- Skills Section - IMPROVED -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Technical Mastery & Strategic Thinking</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        With over 5 years of experience delivering digital solutions, I combine technical expertise with strategic business thinking to create solutions that drive real results.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Web Development</h4>
+                            <p class="text-gray-600">React, Next.js, Node.js - 50+ production apps built</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">E-commerce</h4>
+                            <p class="text-gray-600">Shopify Expert - $2M+ in client sales processed</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">SEO & Digital Marketing</h4>
+                            <p class="text-gray-600">Ranked 30+ sites in top 3 Google search results</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">API Integration</h4>
+                            <p class="text-gray-600">Stripe, PayPal, HubSpot, Zapier certified integrations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12" data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Tools I Use Daily</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-figma text-2xl text-purple-600 mb-2"></i>
+                            <p class="font-medium">Figma</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-react text-2xl text-blue-500 mb-2"></i>
+                            <p class="font-medium">React</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-node-js text-2xl text-green-600 mb-2"></i>
+                            <p class="font-medium">Node.js</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-github text-2xl text-gray-800 mb-2"></i>
+                            <p class="font-medium">GitHub</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h4 class="font-bold text-gray-900 mb-2">My Guarantee</h4>
+                        <p class="text-gray-600 mb-4">14-day revision period included with every project. Satisfaction guaranteed or money back.</p>
+                        <div class="flex items-center text-blue-700">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            <span class="font-medium">30-day post-launch support included</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - IMPROVED -->
+    <section class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Client Success Stories</h2>
+                <p class="text-lg text-gray-600">
+                    Don't just take my word for it - here's what business owners I've worked with have to say about our collaboration.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sarah Mitchell" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Sarah Mitchell</h4>
+                            <p class="text-sm text-gray-600">E-commerce Director, GreenLeaf Organics</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Zuhaib rebuilt our e-commerce site and sales jumped 38% in the first month. His attention to detail and communication made the whole process smooth."
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">January 2025</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Michael Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Michael Chen</h4>
+                            <p class="text-sm text-gray-600">Owner, Momentum Fitness</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "The membership system Zuhaib built for our gym increased signups by 45%. He understood our needs perfectly and delivered ahead of schedule."
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">November 2024</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="Jessica Williams" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Jessica Williams</h4>
+                            <p class="text-sm text-gray-600">Partner, Borano Law Firm</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "The legal management system Zuhaib developed has revolutionized how we handle cases. It's saved us 15+ hours per week in administrative work."
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">September 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section - NEW SECTION -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600">
+                    Common questions about working with me and my process.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <div class="bg-gray-50 rounded-xl p-6" data-aos="fade-up">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">How long does a typical project take?</h3>
+                        <p class="text-gray-600">Most projects take 3-6 weeks from start to finish, depending on complexity. I provide a detailed timeline in the initial proposal.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">What's your payment structure?</h3>
+                        <p class="text-gray-600">I require a 50% deposit to begin work, with the remaining 50% due upon project completion. For larger projects, we can discuss milestone-based payments.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Do you offer ongoing maintenance?</h3>
+                        <p class="text-gray-600">Yes, I offer monthly maintenance plans starting at $150/month. This includes updates, backups, security monitoring, and minor changes.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Do you work with international clients?</h3>
+                        <p class="text-gray-600">Absolutely! I work with clients worldwide. Communication is primarily via email, video calls, and project management tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Fixed WhatsApp Button - Add this ONCE before closing </body> tag -->
+<a href="https://wa.me/923288768783?text=Hi%20Zuhaib!%20I'm%20interested%20in%20discussing%20a%20project." 
+   target="_blank"
+   class="fixed right-6 top-1/2 -translate-y-1/2 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 z-50 group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <!-- Tooltip that appears on hover -->
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        Chat on WhatsApp
+    </span>
+</a>
+    <!-- Contact Section - IMPROVED -->
+    <section id="contact" class="section-padding gradient-bg text-white relative overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+                <p class="text-xl text-blue-100">
+                    Let's discuss how I can help you achieve your digital goals and drive measurable growth.
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-700 p-8">
+                        <h3 class="text-2xl font-bold mb-6">Get Your Free Quote</h3>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-blue-200">Email</p>
+                                    <p class="font-medium">zuhaib.zul@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-blue-200">Phone</p>
+                                    <p class="font-medium">+92 328 8768783</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-blue-200">Location</p>
+                                    <p class="font-medium">Khanewal, Pakistan</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-blue-200">Response Time</p>
+                                    <p class="font-medium">Within 4 hours (Mon-Fri)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-500 transition-colors mb-4">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                Book a 15-min Call
+                            </a>
+                            
+                            <h4 class="font-bold mb-4 text-center">Follow My Work</h4>
+                            <div class="flex justify-center space-x-4">
+                                <a href="https://www.linkedin.com/in/zuhaib-zulfiqar-908a111a5/" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/zabipacer" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/pixalperfect_solutions/" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- WhatsApp Chat Button - Paste anywhere in your HTML -->
+
+                    <div class="md:w-1/2 p-8">
+                     <form action="https://formsubmit.co/zuhaib.zul@gmail.com" method="POST" class="space-y-6">
+    <!-- Honeypot for spam protection -->
+    <input type="text" name="_honey" style="display:none">
+    
+    <!-- Disable captcha -->
+    <input type="hidden" name="_captcha" value="false">
+    
+    <div>
+        <label class="block text-gray-900 text-sm font-semibold mb-2" for="name">
+            Name <span class="text-red-500">*</span>
+        </label>
+        <input 
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400" 
+            id="name" 
+            name="name"
+            type="text" 
+            placeholder="John Doe" 
+            required>
+    </div>
+    
+    <div>
+        <label class="block text-gray-900 text-sm font-semibold mb-2" for="email">
+            Email <span class="text-red-500">*</span>
+        </label>
+        <input 
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400" 
+            id="email" 
+            name="email"
+            type="email" 
+            placeholder="john@example.com" 
+            required>
+    </div>
+    
+    <div>
+        <label class="block text-gray-900 text-sm font-semibold mb-2" for="project-type">
+            Project Type
+        </label>
+        <select 
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-gray-900 bg-white" 
+            id="project-type"
+            name="project_type">
+            <option value="">Select a service</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Business Automation">Business Automation</option>
+            <option value="SEO & Marketing">SEO & Marketing</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    
+    <div>
+        <label class="block text-gray-900 text-sm font-semibold mb-2" for="budget">
+            Budget Range
+        </label>
+        <select 
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-gray-900 bg-white" 
+            id="budget"
+            name="budget">
+            <option value="">Select budget</option>
+            <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+            <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+            <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+            <option value="$10,000+">$10,000+</option>
+        </select>
+    </div>
+    
+    <div>
+        <label class="block text-gray-900 text-sm font-semibold mb-2" for="message">
+            Project Details <span class="text-red-500">*</span>
+        </label>
+        <textarea 
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-gray-900 placeholder-gray-400 resize-none" 
+            id="message" 
+            name="message"
+            rows="5" 
+            placeholder="Tell me about your project goals and challenges..." 
+            required></textarea>
+    </div>
+    
+    <button 
+        type="submit"
+        class="w-full bg-blue-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-blue-700 active:bg-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+        Get Your Free Quote
+    </button>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0" data-aos="fade-right">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center animate-pulse-slow">
+                            <span class="text-white font-bold">Z</span>
+                        </div>
+                        <span class="text-xl font-bold">Zuhaib</span>
+                    </div>
+                    <p class="mt-2 text-gray-400">Strategic Web Developer & Automation Expert</p>
+                </div>
+                
+                <div class="flex space-x-6" data-aos="fade-left">
+                    <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
+                    <a href="#process" class="text-gray-400 hover:text-white transition-colors">Process</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Case Studies</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400" data-aos="fade-up">
+                <p>&copy; 2023 Zuhaib. Crafting digital solutions that drive business growth.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
